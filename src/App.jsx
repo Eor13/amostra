@@ -7,8 +7,8 @@ function App() {
   return (
     <div className='container-master'> 
       <FunctionComponentTitle/>
-      <FunctionComponentCard CardNumber='1'/>
-      <FunctionComponentCard CardNumber ='2'/>
+      <FunctionComponentCard CardNumber='1' CardFunction="Primeiro"/>
+      <FunctionComponentCard CardNumber ='2'CardFunction="Segundo"/>
     </div>
   )
 }

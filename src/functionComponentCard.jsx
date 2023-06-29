@@ -1,20 +1,32 @@
 import { useEffect, useState } from 'react';
 import './functionComponentCard.css'
-/* eslint-disable react/prop-types */
 
 export function FunctionComponentCard(props) {
-    const [toogle, setToogle] = useState(true);
-    const [cor, setCor] = useState('#c3c3c3');
-    useEffect(() => { setCor((state) => toogle ? '#c3c3c3': '#446677');
+    //Para realizar uma manipulação de eventos em react ,Devemos primeiro definir uma função ou um estado e depois passa-ló como uma prop para o elemento JSX desejado
+    // Declare uma função chamada "........." dentro do seu componente Button.
+    // Implemente a lógica dentro dessa função.
+    // Adicione onClick={handleClick} ao JSX do elemento <button>.
+    
+    const [toogle, setToogle] = useState();
+    const [display, setDisplay] = useState();
+
+    const showText = (props) =>{
+        return <p className='text'> {props.CardFunction} Exemplo de Evento </p>
+    }
+
+    useEffect(() => { 
+        setDisplay(
+            () =>  toogle ?'showBox': 'ocultBox')
     }, [toogle])
 
     return(
-        <div>
-            <h3>Nome do Cartão {props.CardNumber}</h3>
+        <div className='cards'>
+            <h3>Cartão {props.CardNumber}</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dolorem quisquam, neque ipsam corrupti impedit animi.</p>
             <br/>
-            <button onClick={e => setToogle(state => !state)}>Mostrar</button>
-            <p className='option'  style={{backgroundColor:cor}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni sed esse sint quasi voluptates cum optio incidunt et dignissimos amet corporis, tempore praesentium autem, voluptate consectetur placeat nam eos voluptatum?</p>
+            <button onClick={e => {setToogle(state => !state)}}>Mostrar</button>
+            <div className={display}> 👍 {showText(props)} </div>
+            
         </div>
     )
 }
